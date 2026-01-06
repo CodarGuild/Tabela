@@ -13,19 +13,19 @@
     <body class="p-4">
         <div class="container">
 
-            <table id="minhaTabela" class="table table-bordered">
-                <thead class="table-dark text-center">
+            <table id="minhaTabela" class="table table-bordered" style="border: solid black 2px;">
+                <thead class="text-center">
                     <tr>
-                        <th colspan="3" id="tituloTabela" class="fs-4"></th>
+                        <th colspan="3" id="tituloTabela" class="fs-4" style="color: black; background-color: #9ea2e6;"></th>
                         
                     </tr>
 
                     <tr>
-                        <th>Domingo (Manhã)</th>
+                        <th style="color: black; background-color: #faff61;">Domingo (Manhã)</th>
 
-                        <th>Domingo (Noite)</th>
+                        <th style="color: black; background-color: #b7caeb;">Domingo (Noite)</th>
 
-                        <th>Quarta-feira</th>
+                        <th style="color: black; background-color: #afd98f;">Quarta-feira</th>
 
                     </tr>
 
@@ -33,11 +33,11 @@
 
                 <tbody id="corpoTabela">
                     <tr>
-                        <td class="table-dark text-center">Turma 4 a 6 anos</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #faff61;">Turma 4 a 6 anos</td>
 
-                        <td class="table-dark text-center">Primeiros Passos</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #b7caeb;">Primeiros Passos</td>
 
-                        <td class="table-dark text-center">Turma 3 a 5 anos</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #afd98f;">Turma 3 a 5 anos</td>
 
                     </tr>
 
@@ -45,11 +45,11 @@
 
                 <tbody id="corpoTabela2">
                     <tr>
-                        <td class="table-dark text-center">Turma 7 a 12 anos</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #faff61;">Turma 7 a 12 anos</td>
 
-                        <td class="table-dark text-center">Passos Firmes</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #b7caeb;">Passos Firmes</td>
 
-                        <td class="table-dark text-center">Turma 6 a 9 anos</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #afd98f;">Turma 6 a 9 anos</td>
 
                     </tr>
 
@@ -57,11 +57,11 @@
 
                 <tbody id="corpoTabela3">
                     <tr>
-                        <td class="table-dark text-center">Apoio</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #faff61;">Apoio</td>
 
-                        <td class="table-dark text-center">Crescendo em Fé</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #b7caeb;">Crescendo em Fé</td>
 
-                        <td class="table-dark"></td>
+                        <td style="background-color: #afd98f;"></td>
 
                     </tr>
 
@@ -69,11 +69,11 @@
 
                 <tbody id="corpoTabela4">
                     <tr>
-                        <td class="table-dark"></td>
+                        <td style="background-color: #faff61;"></td>
 
-                        <td class="table-dark text-center">Conectados</td>
+                        <td class="text-center fs-5" style="color: red; background-color: #b7caeb;">Conectados</td>
 
-                        <td class="table-dark"></td>
+                        <td style="background-color: #afd98f;"></td>
 
                     </tr>
 
@@ -139,17 +139,17 @@
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #faff61;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #b7caeb;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #afd98f;">
                         <span class="data">${quartas[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
@@ -163,17 +163,17 @@
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #faff61;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #b7caeb;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #afd98f;">
                         <span class="data">${quartas[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
@@ -187,17 +187,17 @@
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #faff61;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #b7caeb;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="text-center"></td>
+                    <td class="text-center" style="color: black; background-color: #afd98f;"></td>
                 `;
 
                 corpoTabela3.appendChild(tr);
@@ -208,14 +208,14 @@
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td class="text-center"></td>
+                    <td class="text-center" style="color: black; background-color: #faff61;"></td>
 
-                    <td class="clicavel text-center">
+                    <td class="clicavel text-center" style="color: black; background-color: #b7caeb;">
                         <span class="data">${domingos[i] || ""}:</span> 
                         <span class="texto">???</span>
                     </td>
 
-                    <td class="text-center"></td>
+                    <td class="text-center" style="color: black; background-color: #afd98f;"></td>
                 `;
 
                 corpoTabela4.appendChild(tr);
