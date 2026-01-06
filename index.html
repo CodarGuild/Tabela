@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Tabela Interativa</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    </head>
+    
+    <body class="p-4">
+        <div class="container">
+
+            <h3 class="mb-3">Tabela Interativa</h3>
+
+            <table id="minhaTabela" class="table table-bordered">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th colspan="3" id="tituloTabela" class="fs-4"></th>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Domingo (Manhã)</th>
+
+                        <th>Domingo (Noite)</th>
+
+                        <th>Quarta-feira</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="corpoTabela">
+                    <tr>
+                        <td class="table-dark text-center">Turma 4 a 6 anos</td>
+
+                        <td class="table-dark text-center">Primeiros Passos</td>
+
+                        <td class="table-dark text-center">Turma 3 a 5 anos</td>
+
+                    </tr>
+
+                </tbody>
+
+                <tbody id="corpoTabela2">
+                    <tr>
+                        <td class="table-dark text-center">Turma 7 a 12 anos</td>
+
+                        <td class="table-dark text-center">Passos Firmes</td>
+
+                        <td class="table-dark text-center">Turma 6 a 9 anos</td>
+
+                    </tr>
+
+                </tbody>
+
+                <tbody id="corpoTabela3">
+                    <tr>
+                        <td class="table-dark text-center">Apoio</td>
+
+                        <td class="table-dark text-center">Crescendo em Fé</td>
+
+                        <td class="table-dark"></td>
+
+                    </tr>
+
+                </tbody>
+
+                <tbody id="corpoTabela4">
+                    <tr>
+                        <td class="table-dark"></td>
+
+                        <td class="table-dark text-center">Conectados</td>
+
+                        <td class="table-dark"></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <input id="userInput" type="text" class="form-control mb-3" placeholder="Digite algo..." style="display: none;">
+
+            <button id="btnSalvar" class="btn btn-success">Salvar Tabela como PNG</button>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+
+        <script>
+            const corpoTabela = document.getElementById("corpoTabela");
+
+            const corpoTabela2 = document.getElementById("corpoTabela2");
+
+            const corpoTabela3 = document.getElementById("corpoTabela3");
+
+            const corpoTabela4 = document.getElementById("corpoTabela4");
+
+            const nomesMeses = [
+                "Janeiro", "Fevereiro", "Março", "Abril",
+                "Maio", "Junho", "Julho", "Agosto",
+                "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+
+            const hoje = new Date();
+
+            const mes = hoje.getMonth();
+
+            const ano = hoje.getFullYear();
+
+            document.getElementById("tituloTabela").textContent = `Escala do mês de ${nomesMeses[mes]}`;
+
+            let domingos = [];
+
+            let quartas = [];
+
+            const totalDias = new Date(ano, mes + 1, 0).getDate();
+
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const data = new Date(ano, mes, dia);
+
+                const diaSemana = data.getDay();
+
+                const dataFormatada = String(dia).padStart(2, "0") + "/" + String(mes + 1).padStart(2, "0");
+
+                if (diaSemana === 0) domingos.push(dataFormatada);
+
+                if (diaSemana === 3) quartas.push(dataFormatada);
+
+            }
+
+            const maxLinhas = Math.max(domingos.length, quartas.length);
+
+            for (let i = 0; i < maxLinhas; i++) {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${quartas[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+                `;
+
+                corpoTabela.appendChild(tr);
+
+            }
+
+            for (let i = 0; i < maxLinhas; i++) {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${quartas[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+                `;
+
+                corpoTabela2.appendChild(tr);
+                
+            }
+
+            for (let i = 0; i < maxLinhas; i++) {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="text-center"></td>
+                `;
+
+                corpoTabela3.appendChild(tr);
+                
+            }
+
+            for (let i = 0; i < maxLinhas; i++) {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td class="text-center"></td>
+
+                    <td class="clicavel text-center">
+                        <span class="data">${domingos[i] || ""}:</span> 
+                        <span class="texto">???</span>
+                    </td>
+
+                    <td class="text-center"></td>
+                `;
+
+                corpoTabela4.appendChild(tr);
+                
+            }
+            
+            let celulaSelecionada = null;
+
+            function ativarEdicao() {
+                document.querySelectorAll(".clicavel").forEach(celula => {
+                    celula.addEventListener("click", () => {
+                        celulaSelecionada = celula;
+
+                        document.getElementById("userInput").style.display = "block";
+
+                        document.getElementById("userInput").value = "";
+
+                        document.getElementById("userInput").focus();
+
+                    });
+
+                });
+
+            }
+
+            ativarEdicao();
+
+            document.querySelectorAll(".clicavel").forEach(celula => {
+                celula.addEventListener("click", () => {
+                    celulaSelecionada = celula;
+
+                    document.getElementById("userInput").style.display = "block";
+
+                    document.getElementById("userInput").value = "";
+
+                    document.getElementById("userInput").focus();
+
+                });
+
+            });
+
+            document.getElementById("userInput").addEventListener("keydown", (e) => {
+                if (e.key === "Enter" && celulaSelecionada) {
+                    const novoTexto = e.target.value.trim();
+
+                    if (novoTexto !== "") {
+                        const spanTexto = celulaSelecionada.querySelector(".texto");
+
+                        spanTexto.textContent = novoTexto;
+
+                    }
+
+                    document.getElementById("userInput").style.display = "none";
+
+                    celulaSelecionada = null;
+
+                }
+
+            });
+            
+            document.getElementById("btnSalvar").addEventListener("click", () => {
+                const tabela = document.getElementById("minhaTabela");
+                
+                if (!tabela) {
+                    alert("Tabela não encontrada!");
+
+                    return;
+
+                }
+
+                html2canvas(tabela, { useCORS: true, scale: 3 })
+                    .then(canvas => {
+                        const link = document.createElement("a");
+
+                        link.download = "escala_tabela.png";
+
+                        link.href = canvas.toDataURL("image/png");
+
+                        link.click();
+
+                    })
+
+                    .catch(err => {
+                        console.error("Erro ao gerar imagem:", err);
+
+                        alert("Não foi possível criar a imagem da tabela.");
+
+                    });
+
+            });
+
+        </script>
+
+    </body>
+
+</html>
